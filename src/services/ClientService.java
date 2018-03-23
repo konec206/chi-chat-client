@@ -348,13 +348,15 @@ public class ClientService implements Runnable {
         System.out.println("Registration :");
         System.out.println("####################");
 
-        String username = " ";
+        String username = "";
         String password = "";
         String name = "";
         String firstname = "";
 
+        String result = " ";
+        
         do {
-            if (username.equals("")) {
+            if (result.equals("")) {
                 System.out.println("This username is already taken");
             }
             System.out.print("Username : \n> ");
@@ -365,7 +367,9 @@ public class ClientService implements Runnable {
             name = sc.nextLine();
             System.out.print("Firstname : \n> ");
             firstname = sc.nextLine();
-        } while (userService.register(username, password, name, firstname).equals(""));
+            
+            result = userService.register(username, password, name, firstname);
+        } while (result.equals(""));
 
         usernameConnected = username;
 
